@@ -1,0 +1,7 @@
+/*!
+ * \defgroup block GNU Radio STREAM_TO_MSG C++ Signal Processing Blocks
+ * \brief All C++ blocks that can be used from the STREAM_TO_MSG GNU Radio
+ *        module are listed here or in the subcategories below.
+ *
+ */
+

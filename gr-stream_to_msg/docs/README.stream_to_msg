@@ -1,0 +1,11 @@
+This is the stream_to_msg-write-a-block package meant as a guide to building
+out-of-tree packages. To use the stream_to_msg blocks, the Python namespaces
+is in 'stream_to_msg', which is imported as:
+
+    import stream_to_msg
+
+See the Doxygen documentation for details about the blocks available
+in this package. A quick listing of the details can be found in Python
+after importing by using:
+
+    help(stream_to_msg)
