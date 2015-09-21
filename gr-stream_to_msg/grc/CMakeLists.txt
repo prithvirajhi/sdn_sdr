@@ -18,5 +18,5 @@
 # Boston, MA 02110-1301, USA.
 
 install(FILES
-    DESTINATION share/gnuradio/grc/blocks
+    stream_to_msg_stream_to_msg_bc.xml DESTINATION share/gnuradio/grc/blocks
 )

@@ -22,5 +22,5 @@
 ########################################################################
 install(FILES
     api.h
-    DESTINATION include/stream_to_msg
+    stream_to_msg_bc.h DESTINATION include/stream_to_msg
 )

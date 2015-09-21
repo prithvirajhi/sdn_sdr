@@ -26,6 +26,7 @@ include_directories(${Boost_INCLUDE_DIR})
 link_directories(${Boost_LIBRARY_DIRS})
 
 list(APPEND stream_to_msg_sources
+    stream_to_msg_bc_impl.cc
 )
 
 set(stream_to_msg_sources "${stream_to_msg_sources}" PARENT_SCOPE)

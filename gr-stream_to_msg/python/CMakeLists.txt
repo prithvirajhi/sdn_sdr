@@ -41,3 +41,4 @@ include(GrTest)
 
 set(GR_TEST_TARGET_DEPS gnuradio-stream_to_msg)
 set(GR_TEST_PYTHON_DIRS ${CMAKE_BINARY_DIR}/swig)
+GR_ADD_TEST(qa_stream_to_msg_bc ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_stream_to_msg_bc.py)
