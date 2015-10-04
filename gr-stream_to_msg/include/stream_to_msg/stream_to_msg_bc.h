@@ -58,7 +58,7 @@ namespace gr {
     struct GNU_SS_MESSAGE
     {
         enum GNU_SS_MESSAGE_TYPE type;
-        union 
+        union u 
         {
             GNU_SS_MESSAGE_CONFIG config;
         };

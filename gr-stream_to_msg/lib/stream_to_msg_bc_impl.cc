@@ -70,8 +70,22 @@ namespace gr {
     }
 
     void 
-    ae_process_config()
+    ae_process_config(GNU_SS_MESSAGE_CONFIG* cfg, size_t len)
     {
+        size_t i;
+
+        GR_LOG_WARN("Process config message");
+
+        if (len < offsetof(GNU_SS_MESSAGE_CONFIG, u))
+        {
+            GR_LOG_WARN("Bad config message");
+            return;
+        }
+
+        len -= offsetof(GNU_SS_MESSAGE_CONFIG, u);
+
+        switch(cfg->config_type){
+        }
     }
     void
     socket_pdu_impl::handle_udp_read(const boost::system::error_code& error, size_t bytes_transferred)
@@ -91,7 +105,7 @@ namespace gr {
                 case GNU_SS_STATS_REQ:
                     break;
                 case GNU_SS_CONFIG:
-                    ae_process_config(&msg->u.config,
+                    ae_process_config(&msg->config.u,
                                       bytes_transferred - offset(GNU_SS_MESSAGE, u));
                     break;
                 default:
