@@ -69,8 +69,12 @@ namespace gr {
 
     }
 
+    void 
+    ae_process_config()
+    {
+    }
     void
-    socket_pdu_impl::handle_tcp_read(const boost::system::error_code& error, size_t bytes_transferred)
+    socket_pdu_impl::handle_udp_read(const boost::system::error_code& error, size_t bytes_transferred)
     {
         if(!error) {
             pmt::pmt_t vector = pmt::init_u8vector(bytes_transferred, (const uint8_t *)&d_rxbuf[0]);
@@ -106,33 +110,9 @@ namespace gr {
     /*
      * Our virtual destructor.
      */
-    stream_to_msg_bc_impl::~stream_to_msg_bc_impl()
-    {
-    }
-
-    void
-    stream_to_msg_bc_impl::forecast (int noutput_items, gr_vector_int &ninput_items_required)
-    {
-        /* <+forecast+> e.g. ninput_items_required[0] = noutput_items */
-    }
-
-    int
-    stream_to_msg_bc_impl::general_work (int noutput_items,
-                       gr_vector_int &ninput_items,
-                       gr_vector_const_void_star &input_items,
-                       gr_vector_void_star &output_items)
-    {
-        const <+ITYPE*> *in = (const <+ITYPE*> *) input_items[0];
-        <+OTYPE*> *out = (<+OTYPE*> *) output_items[0];
-
-        // Do <+signal processing+>
-        // Tell runtime system how many input items we consumed on
-        // each input stream.
-        consume_each (noutput_items);
-
-        // Tell runtime system how many output items we produced.
-        return noutput_items;
-    }
+//    stream_to_msg_bc_impl::~stream_to_msg_bc_impl()
+//    {
+//    }
 
   } /* namespace stream_to_msg */
 } /* namespace gr */

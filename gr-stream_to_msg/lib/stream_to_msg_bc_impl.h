@@ -30,18 +30,23 @@ namespace gr {
     {
      private:
       // Nothing to declare in this block.
+         boost::asio::io_service d_io_service;
+         std::vector<char> d_rxbuf;
+         void run_io_service() { d_io_service.run(); }
+
+         boost::asio::ip::udp::endpoint d_udp_endpoint;
+         boost::asio::ip::udp::endpoint d_udp_endpoint_other;
+         boost::shared_ptr<boost::asio::ip::udp::socket> d_udp_socket;
+         void handle_udp_read(const boost::system::error_code& error, size_t bytes_transferred);
+
 
      public:
-      stream_to_msg_bc_impl();
-      ~stream_to_msg_bc_impl();
+         stream_to_msg_bc_impl::stream_to_msg_bc_impl(std::string type, 
+                                                      std::string addr,
+                                                      std::string port,
+                                                      int MTU);
+//      ~stream_to_msg_bc_impl();
 
-      // Where all the action really happens
-      void forecast (int noutput_items, gr_vector_int &ninput_items_required);
-
-      int general_work(int noutput_items,
-		       gr_vector_int &ninput_items,
-		       gr_vector_const_void_star &input_items,
-		       gr_vector_void_star &output_items);
     };
 
   } // namespace stream_to_msg

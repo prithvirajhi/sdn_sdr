@@ -33,6 +33,36 @@ namespace gr {
      * \ingroup stream_to_msg
      *
      */
+   // enum GNU_CONFIG_TYPE
+   // {
+   //     GNU_GAIN = 0,
+   //     GNU_FREQ
+   // };
+
+    struct GNU_SS_MESSAGE_CONFIG
+    {
+        uint8_t gain;
+        uint8_t freq;
+    }; 
+
+    enum GNU_SS_MESSAGE_TYPE
+    {
+        GNU_SS_EVENT = 0,
+        GNU_SS_STATS_REQ,
+        GNU_SS_STATS_RES,
+        GNU_SS_CONFIG,
+        GNU_SS_PORTS_NOTIFY,
+        GNU_SS_PORTS_NOTIFY_REQUEST
+    };
+
+    struct GNU_SS_MESSAGE
+    {
+        enum GNU_SS_MESSAGE_TYPE type;
+        union 
+        {
+            GNU_SS_MESSAGE_CONFIG config;
+        };
+    };
     class STREAM_TO_MSG_API stream_to_msg_bc : virtual public gr::block
     {
      public:
