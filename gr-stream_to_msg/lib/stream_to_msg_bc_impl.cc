@@ -23,7 +23,17 @@
 #endif
 
 #include <gnuradio/io_signature.h>
+#include <gnuradio/blocks/pdu.h>
+#include <gnuradio/blocks/socket_pdu.h>
+#include <gnuradio/thread/thread.h>
+#include <pmt/pmt.h>
+#include <boost/asio.hpp>
+
 #include "stream_to_msg_bc_impl.h"
+//#include "socket_pdu_impl.h"
+
+
+//#define PDU_PORT_ID   pmt::mp("pdus")
 
 namespace gr {
   namespace stream_to_msg {
@@ -65,7 +75,7 @@ namespace gr {
                                          boost::asio::placeholders::error,
                                          boost::asio::placeholders::bytes_transferred));
         d_thread = gr::thread::thread(boost::bind(&stream_to_msg_bc_impl::run_io_service, this));
-        d_started = true;
+        //d_started = true;
 
     }
 
@@ -73,19 +83,49 @@ namespace gr {
     ae_process_config(GNU_SS_MESSAGE_CONFIG* cfg, size_t len)
     {
         size_t i;
+        int change = 0;
 
-        GR_LOG_WARN("Process config message");
+        GR_LOG_DEBUG(d_logger,"Process config message");
 
         if (len < offsetof(GNU_SS_MESSAGE_CONFIG, u))
         {
-            GR_LOG_WARN("Bad config message");
+            GR_LOG_WARN(d_logger, "Bad config message");
             return;
         }
 
-        len -= offsetof(GNU_SS_MESSAGE_CONFIG, u);
+        //len -= offsetof(GNU_SS_MESSAGE_CONFIG, u);
 
-        switch(cfg->config_type){
+        //switch(cfg->config_type){
+        //
+        if (len < 2)
+        {
+            GR_LOG_WARN(d_logger, "Bad config message, type = ");
+            return;
+        } 
+        if (cfg == NULL)
+        {
+            GR_LOG_WARN(d_logger, "cfg is null ");
+            return;
         }
+        pmt::pmt_t command = pmt::make_dict();
+        
+        if (cfg->gain != 0) {
+             pmt::dict_add(command, pmt::mp("gain",pmt::mp(cfg->gain));
+             change++;
+        }
+        if (cfg->freq != 0) {
+             pmt::dict_add(command, pmt::mp("freq",pmt::mp(cfg->freq));
+             change++;
+        }
+        //d_pdu_vector = pdu::make_pdu_vector(d_type, in, ninput_items[0]);
+
+        // Send msg
+        //pmt::pmt_t msg = pmt::cons(d_pdu_meta, d_pdu_vector);
+        if (change != 0) {
+            GR_LOG_DEBUG(d_logger, "Sending message to UHD port");
+            message_port_pub(PDU_PORT_ID, command);
+        }
+
     }
     void
     socket_pdu_impl::handle_udp_read(const boost::system::error_code& error, size_t bytes_transferred)
@@ -97,6 +137,7 @@ namespace gr {
 
             if(bytes_transferred < offsetof(GNU_SS_MESSAGE, u) {
                 GR_LOG_WARN(d_logger, "Received bad message");
+                //return;
             }
 
             switch(msg->type) {
@@ -116,7 +157,7 @@ namespace gr {
                                          boost::asio::placeholders::error,
                                          boost::asio::placeholders::bytes_transferred));
         } else {
-            GR_LOG_WARN(d_logger, "Error received while reading message %d ", error);
+            GR_LOG_WARN(d_logger, "Error received while reading message");
         }  
     }
              

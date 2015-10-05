@@ -41,10 +41,10 @@ namespace gr {
 
 
      public:
-         stream_to_msg_bc_impl::stream_to_msg_bc_impl(std::string type, 
-                                                      std::string addr,
-                                                      std::string port,
-                                                      int MTU);
+         stream_to_msg_bc_impl(std::string type, 
+                               std::string addr,
+                               std::string port,
+                               int MTU);
 //      ~stream_to_msg_bc_impl();
 
     };

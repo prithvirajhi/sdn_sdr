@@ -24,6 +24,7 @@
 
 #include <stream_to_msg/api.h>
 #include <gnuradio/block.h>
+#include <gnuradio/blocks/api.h>
 
 namespace gr {
   namespace stream_to_msg {
@@ -76,7 +77,7 @@ namespace gr {
        * class. stream_to_msg::stream_to_msg_bc::make is the public interface for
        * creating new instances.
        */
-      static sptr make();
+      static sptr make(std::string type, std::string addr, std::string port, int MTU=10000);
     };
 
   } // namespace stream_to_msg

@@ -1,0 +1,12 @@
+/home/prithvirajhi/sdn_sdr/gr-stream_to_msg/build/swig/CMakeFiles/_stream_to_msg_swig.dir
+/home/prithvirajhi/sdn_sdr/gr-stream_to_msg/build/swig/CMakeFiles/_stream_to_msg_swig_doc_tag.dir
+/home/prithvirajhi/sdn_sdr/gr-stream_to_msg/build/swig/CMakeFiles/_stream_to_msg_swig_swig_tag.dir
+/home/prithvirajhi/sdn_sdr/gr-stream_to_msg/build/docs/doxygen/CMakeFiles/doxygen_target.dir
+/home/prithvirajhi/sdn_sdr/gr-stream_to_msg/build/lib/CMakeFiles/gnuradio-stream_to_msg.dir
+/home/prithvirajhi/sdn_sdr/gr-stream_to_msg/build/apps/CMakeFiles/pygen_apps_9a6dd.dir
+/home/prithvirajhi/sdn_sdr/gr-stream_to_msg/build/python/CMakeFiles/pygen_python_5be81.dir
+/home/prithvirajhi/sdn_sdr/gr-stream_to_msg/build/swig/CMakeFiles/pygen_swig_12a77.dir
+/home/prithvirajhi/sdn_sdr/gr-stream_to_msg/build/swig/CMakeFiles/stream_to_msg_swig_swig_2d0df.dir
+/home/prithvirajhi/sdn_sdr/gr-stream_to_msg/build/swig/CMakeFiles/stream_to_msg_swig_swig_doc.dir
+/home/prithvirajhi/sdn_sdr/gr-stream_to_msg/build/lib/CMakeFiles/test-stream_to_msg.dir
+/home/prithvirajhi/sdn_sdr/gr-stream_to_msg/build/CMakeFiles/uninstall.dir

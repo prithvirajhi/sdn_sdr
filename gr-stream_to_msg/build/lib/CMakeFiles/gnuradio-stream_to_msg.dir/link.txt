@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC -O3 -DNDEBUG   -shared -Wl,-soname,libgnuradio-stream_to_msg.so -o libgnuradio-stream_to_msg.so CMakeFiles/gnuradio-stream_to_msg.dir/stream_to_msg_bc_impl.cc.o -lboost_filesystem -lboost_system /usr/local/lib/libgnuradio-runtime.so /usr/local/lib/libgnuradio-pmt.so -Wl,-rpath,/usr/local/lib: 
