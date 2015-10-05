@@ -52,17 +52,17 @@ namespace gr {
         GNU_SS_STATS_REQ,
         GNU_SS_STATS_RES,
         GNU_SS_CONFIG,
-        GNU_SS_PORTS_NOTIFY,
-        GNU_SS_PORTS_NOTIFY_REQUEST
+        GNU_SS_NOTIFY,
+        GNU_SS_NOTIFY_REQUEST
     };
 
     struct GNU_SS_MESSAGE
     {
         enum GNU_SS_MESSAGE_TYPE type;
-        union u 
+        union  
         {
             GNU_SS_MESSAGE_CONFIG config;
-        };
+        }u;
     };
     class STREAM_TO_MSG_API stream_to_msg_bc : virtual public gr::block
     {

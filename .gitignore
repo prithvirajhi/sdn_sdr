@@ -1,1 +1,3 @@
 gr-stream_to_msg/build/*
+gr-stream_to_msg/include/stream_to_msg/*.swp
+gr-stream_to_msg/lib/*.swp

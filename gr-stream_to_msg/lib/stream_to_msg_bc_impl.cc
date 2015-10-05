@@ -135,7 +135,7 @@ namespace gr {
             uint8_t *buf = (uint8_t *)&d_rxbuf[0];
             GNU_SS_MESSAGE *msg = (GNU_SS_MESSAGE *) buf;
 
-            if(bytes_transferred < offsetof(GNU_SS_MESSAGE, u) {
+            if(bytes_transferred < offsetof(GNU_SS_MESSAGE, u)) {
                 GR_LOG_WARN(d_logger, "Received bad message");
                 //return;
             }
@@ -146,8 +146,8 @@ namespace gr {
                 case GNU_SS_STATS_REQ:
                     break;
                 case GNU_SS_CONFIG:
-                    ae_process_config(&msg->config.u,
-                                      bytes_transferred - offset(GNU_SS_MESSAGE, u));
+                    ae_process_config(&msg->u.config,
+                                      bytes_transferred - offsetof(GNU_SS_MESSAGE, u));
                     break;
                 default:
                     GR_LOG_WARN(d_logger, "Received unknown message");
