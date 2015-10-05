@@ -80,18 +80,18 @@ namespace gr {
     }
 
     void 
-    ae_process_config(GNU_SS_MESSAGE_CONFIG* cfg, size_t len)
+    stream_to_msg_bc_impl::ae_process_config(GNU_SS_MESSAGE_CONFIG* cfg, size_t len)
     {
         size_t i;
         int change = 0;
 
         GR_LOG_DEBUG(d_logger,"Process config message");
 
-        if (len < offsetof(GNU_SS_MESSAGE_CONFIG, u))
+        /*if (len < offsetof(GNU_SS_MESSAGE_CONFIG, u))
         {
             GR_LOG_WARN(d_logger, "Bad config message");
             return;
-        }
+        }*/
 
         //len -= offsetof(GNU_SS_MESSAGE_CONFIG, u);
 
@@ -110,11 +110,11 @@ namespace gr {
         pmt::pmt_t command = pmt::make_dict();
         
         if (cfg->gain != 0) {
-             pmt::dict_add(command, pmt::mp("gain",pmt::mp(cfg->gain));
+             pmt::dict_add(command, pmt::mp("gain"),pmt::mp(cfg->gain));
              change++;
         }
         if (cfg->freq != 0) {
-             pmt::dict_add(command, pmt::mp("freq",pmt::mp(cfg->freq));
+             pmt::dict_add(command, pmt::mp("freq"),pmt::mp(cfg->freq));
              change++;
         }
         //d_pdu_vector = pdu::make_pdu_vector(d_type, in, ninput_items[0]);
@@ -128,7 +128,7 @@ namespace gr {
 
     }
     void
-    socket_pdu_impl::handle_udp_read(const boost::system::error_code& error, size_t bytes_transferred)
+    stream_to_msg_bc_impl::handle_udp_read(const boost::system::error_code& error, size_t bytes_transferred)
     {
         if(!error) {
             pmt::pmt_t vector = pmt::init_u8vector(bytes_transferred, (const uint8_t *)&d_rxbuf[0]);

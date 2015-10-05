@@ -21,6 +21,7 @@
 #ifndef INCLUDED_STREAM_TO_MSG_STREAM_TO_MSG_BC_IMPL_H
 #define INCLUDED_STREAM_TO_MSG_STREAM_TO_MSG_BC_IMPL_H
 
+#include <gnuradio/thread/thread.h>
 #include <stream_to_msg/stream_to_msg_bc.h>
 
 namespace gr {
@@ -37,7 +38,9 @@ namespace gr {
          boost::asio::ip::udp::endpoint d_udp_endpoint;
          boost::asio::ip::udp::endpoint d_udp_endpoint_other;
          boost::shared_ptr<boost::asio::ip::udp::socket> d_udp_socket;
+         gr::thread::thread d_thread;
          void handle_udp_read(const boost::system::error_code& error, size_t bytes_transferred);
+         void ae_process_config(GNU_SS_MESSAGE_CONFIG* cfg, size_t len);
 
 
      public:
